@@ -1,36 +1,29 @@
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Loader } from './Loader/Loader';
 import { NotFound } from '../pages/NotFound(404)/NotFound';
 import { Home } from 'pages/Home/Home';
-// import {Movies} from 'pages/Movies/Movies';
 
-import styled from 'styled-components';
 import { Box } from './Box/Box';
-
-const StyledLink = styled(NavLink)`
-  color: black;
-
-  &.active {
-    color: orange;
-  }
-`;
+import { Movies } from 'pages/Movies/Movies';
+import { Header } from './Header/Header';
 
 export const App = () => {
   return (
     <Box display="block">
-      <nav>
+      <Header />
+      {/* <nav>
         <StyledLink to="/" end>
           Home
         </StyledLink>
         <StyledLink to="/movies">Movies</StyledLink>
-      </nav>
+      </nav> */}
 
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:movieId" element={<MovieDelails />} />
-        <Route path="/movies/:movieId/cast" element={<Cast />} />
-        <Route path="/movies/:movieId/reviews" element={<Rewiews />} /> */}
+        <Route path="/movies" element={<Movies />} />
+        {/* <Route path="/movies/:movieId" element={<MovieDelails />} /> */}
+        {/* <Route path="/movies/:movieId/cast" element={<Cast />} /> */}
+        {/* <Route path="/movies/:movieId/reviews" element={<Rewiews />} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Loader />

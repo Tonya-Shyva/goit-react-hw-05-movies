@@ -5,12 +5,14 @@ export const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
 
   useEffect(() => {
-    getTrending().then(resp => setTrendingMovies(resp));
+    getTrending().then(data => setTrendingMovies(data));
   }, [trendingMovies]);
 
   return (
-    <div>
-      <TrandingToday movies={trendingMovies}></TrandingToday>
-    </div>
+    <main>
+      <div>
+        <TrandingToday movies={trendingMovies}></TrandingToday>
+      </div>
+    </main>
   );
 };
