@@ -1,19 +1,39 @@
+import { Routes, Route, NavLink } from 'react-router-dom';
 import { Loader } from './Loader/Loader';
+import { NotFound } from '../pages/NotFound(404)/NotFound';
+import { Home } from 'pages/Home/Home';
+// import {Movies} from 'pages/Movies/Movies';
+
+import styled from 'styled-components';
+import { Box } from './Box/Box';
+
+const StyledLink = styled(NavLink)`
+  color: black;
+
+  &.active {
+    color: orange;
+  }
+`;
 
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-      }}
-    >
+    <Box display="block">
+      <nav>
+        <StyledLink to="/" end>
+          Home
+        </StyledLink>
+        <StyledLink to="/movies">Movies</StyledLink>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/* <Route path="/movies" element={<Movies />} />
+        <Route path="/movies/:movieId" element={<MovieDelails />} />
+        <Route path="/movies/:movieId/cast" element={<Cast />} />
+        <Route path="/movies/:movieId/reviews" element={<Rewiews />} /> */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
       <Loader />
-      React homework template
-    </div>
+    </Box>
   );
 };
