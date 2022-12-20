@@ -1,4 +1,4 @@
-import { TrandingToday } from 'components/TrandingToday/TrandingToday';
+import { MoviesList } from 'components/MoviesList/MoviesList';
 import { useState, useEffect } from 'react';
 import { getTrending } from 'utils/getMoviesApi';
 export const Home = () => {
@@ -6,12 +6,12 @@ export const Home = () => {
 
   useEffect(() => {
     getTrending().then(data => setTrendingMovies(data));
-  }, [trendingMovies]);
+  }, []);
 
   return (
     <main>
       <div>
-        <TrandingToday movies={trendingMovies}></TrandingToday>
+        <MoviesList movies={trendingMovies}></MoviesList>
       </div>
     </main>
   );

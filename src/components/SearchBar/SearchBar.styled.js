@@ -33,6 +33,10 @@ export const SearchBarInput = styled.input`
     font: inherit;
     font-size: 18px;
   }
+
+  &:focus {
+    border: 2px solid blue;
+  }
 `;
 
 export const Button = styled.button`
