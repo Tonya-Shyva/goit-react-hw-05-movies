@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const DetailsContainer = styled.div`
@@ -5,15 +6,19 @@ export const DetailsContainer = styled.div`
   margin: 5px 15px;
 `;
 
-export const GoBackBnt = styled.button`
+export const GoBackLink = styled(Link)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-width: 80px;
+  max-width: 80px;
   margin-top: 5px;
   margin-left: 15px;
   color: black;
   background-color: #fff;
   border: none;
   cursor: pointer;
+`;
+
+export const MovieDescription = styled.div`
+  margin-left: 10px;
 `;
