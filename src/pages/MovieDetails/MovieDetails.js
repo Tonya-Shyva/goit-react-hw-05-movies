@@ -47,7 +47,7 @@ export const MovieDetails = () => {
 
         <MovieDescription>
           <h2>
-            {title} {slicedReleaseDate}
+            {title} ({slicedReleaseDate})
           </h2>
           <p>
             User Score:&nbsp;
