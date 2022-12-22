@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const SearchBarWrap = styled.div`
   display: flex;
   justify-content: left;
-  margin-top: 10px;
+  padding-top: 15px;
+
   align-items: center;
   color: #fff;
   background-color: #fff;

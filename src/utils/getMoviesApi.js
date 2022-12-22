@@ -34,3 +34,10 @@ export const getCastApi = async movieId => {
   );
   return response.data;
 };
+
+export const getReviewsApi = async movieId => {
+  const response = await axios.get(
+    `/movie/${movieId}/reviews?api_key=${API_KEY}`
+  );
+  return response.data;
+};
