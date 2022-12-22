@@ -22,3 +22,7 @@ export const GoBackLink = styled(Link)`
 export const MovieDescription = styled.div`
   margin-left: 10px;
 `;
+
+export const AdditionInformWrap = styled.div`
+  padding: 15px;
+`;

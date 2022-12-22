@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { ImArrowLeft2 } from 'react-icons/im';
 
 import {
+  AdditionInformWrap,
   DetailsContainer,
   GoBackLink,
   MovieDescription,
@@ -60,18 +61,20 @@ export const MovieDetails = () => {
           <p>{genres ? genres.map(genre => genre.name).join(', ') : ''}</p>
         </MovieDescription>
       </DetailsContainer>
-      <h2>Additional information</h2>
-      <div>
-        <ul>
-          <li>
-            <Link to="cast">Cast</Link>
-          </li>
-          <li>
-            <Link to="reviews">Reviews</Link>
-          </li>
-        </ul>
-        <Outlet />
-      </div>
+      <AdditionInformWrap>
+        <h2>Additional information</h2>
+        <div>
+          <ul>
+            <li>
+              <Link to="cast">Cast</Link>
+            </li>
+            <li>
+              <Link to="reviews">Reviews</Link>
+            </li>
+          </ul>
+          <Outlet />
+        </div>
+      </AdditionInformWrap>
     </main>
   );
 };
