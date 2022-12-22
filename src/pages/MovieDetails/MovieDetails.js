@@ -1,4 +1,4 @@
-import { useLocation, useParams } from 'react-router';
+import { Outlet, useLocation, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import { ImArrowLeft2 } from 'react-icons/im';
 
@@ -9,6 +9,7 @@ import {
 } from './MovieDetails.styled';
 
 import { getMovieDetails } from 'utils/getMoviesApi';
+import { Link } from 'react-router-dom';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
@@ -59,6 +60,18 @@ export const MovieDetails = () => {
           <p>{genres ? genres.map(genre => genre.name).join(', ') : ''}</p>
         </MovieDescription>
       </DetailsContainer>
+      <h2>Additional information</h2>
+      <div>
+        <ul>
+          <li>
+            <Link to="cast">Cast</Link>
+          </li>
+          <li>
+            <Link to="reviews">Reviews</Link>
+          </li>
+        </ul>
+        <Outlet />
+      </div>
     </main>
   );
 };
