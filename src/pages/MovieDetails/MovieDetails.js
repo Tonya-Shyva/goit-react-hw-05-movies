@@ -10,6 +10,7 @@ import {
   GoBackLink,
   MovieDescription,
   AdditionalInformText,
+  AdditionalInformHead,
 } from './MovieDetails.styled';
 
 import { getMovieDetails } from 'utils/getMoviesApi';
@@ -68,24 +69,30 @@ export const MovieDetails = () => {
         </MovieDescription>
       </DetailsContainer>
       <AdditionalInformWrap>
-        <h2>Additional information</h2>
-        <ul>
-          <li>
-            <AdditionalInformLink to="cast" state={{ from: backLinkLocation }}>
-              <AdditionalInformText>Cast</AdditionalInformText>
-              <ImArrowRight2 />
-            </AdditionalInformLink>
-          </li>
-          <li>
-            <AdditionalInformLink
-              to="reviews"
-              state={{ from: backLinkLocation }}
-            >
-              <AdditionalInformText>Reviews</AdditionalInformText>
-              <ImArrowRight2 />
-            </AdditionalInformLink>
-          </li>
-        </ul>
+        <AdditionalInformHead>
+          <h2>Additional information</h2>
+          <ul>
+            <li>
+              <AdditionalInformLink
+                to="cast"
+                state={{ from: backLinkLocation }}
+              >
+                <AdditionalInformText>Cast</AdditionalInformText>
+                <ImArrowRight2 />
+              </AdditionalInformLink>
+            </li>
+            <li>
+              <AdditionalInformLink
+                to="reviews"
+                state={{ from: backLinkLocation }}
+              >
+                <AdditionalInformText>Reviews</AdditionalInformText>
+                <ImArrowRight2 />
+              </AdditionalInformLink>
+            </li>
+          </ul>
+        </AdditionalInformHead>
+
         <Outlet />
       </AdditionalInformWrap>
     </main>
