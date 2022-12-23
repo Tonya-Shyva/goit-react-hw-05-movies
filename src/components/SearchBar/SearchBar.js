@@ -1,5 +1,6 @@
-import { MoviesList } from 'components/MoviesList/MoviesList';
-import { useEffect, useState } from 'react';
+import { Loader } from 'components/Loader/Loader';
+// import { MoviesList } from 'components/MoviesList/MoviesList';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,6 +12,13 @@ import {
   SearchBarWrap,
   SearchForm,
 } from './SearchBar.styled';
+
+const MoviesList = lazy(() =>
+  import('components/MoviesList/MoviesList').then(module => ({
+    ...module,
+    default: module.MoviesList,
+  }))
+);
 
 function SearchBar() {
   const [movies, setMovies] = useState([]);
@@ -31,7 +39,6 @@ function SearchBar() {
     const movieTitle = searchParams.get('query');
     if (movieTitle) {
       getSearchMovies(movieTitle).then(ret => setMovies(ret));
-      //   setSearchParams({});
     }
   }, [searchParams]);
 
@@ -51,7 +58,12 @@ function SearchBar() {
           </Button>
         </SearchForm>
       </SearchBarWrap>
-      {movies && <MoviesList movies={movies} />}
+
+      {movies && (
+        <Suspense fallback={<Loader />}>
+          <MoviesList movies={movies} />
+        </Suspense>
+      )}
     </>
   );
 }

@@ -63,17 +63,15 @@ export const MovieDetails = () => {
       </DetailsContainer>
       <AdditionInformWrap>
         <h2>Additional information</h2>
-        <div>
-          <ul>
-            <li>
-              <Link to="cast">Cast</Link>
-            </li>
-            <li>
-              <Link to="reviews">Reviews</Link>
-            </li>
-          </ul>
-          <Outlet />
-        </div>
+        <ul>
+          <li>
+            <Link to="cast">Cast</Link>
+          </li>
+          <li>
+            <Link to="reviews">Reviews</Link>
+          </li>
+        </ul>
+        <Outlet />
       </AdditionInformWrap>
     </main>
   );

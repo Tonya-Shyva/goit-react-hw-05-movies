@@ -1,36 +1,57 @@
 import { Routes, Route } from 'react-router-dom';
-import { NotFound } from '../pages/NotFound(404)/NotFound';
-import { Suspense } from 'react';
-import { Home } from 'pages/Home/Home';
 
-import { Movies } from 'pages/Movies/Movies';
-import { Header } from './Header/Header';
-import { MovieDetails } from 'pages/MovieDetails/MovieDetails';
+import { lazy, Suspense } from 'react';
+
+import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Loader } from './Loader/Loader';
-import { Box } from './Box/Box';
-import { Cast } from './Cast/Cast';
-import { Reviews } from 'pages/MovieDetails/Reviews/Reviwes';
 
-// const MovieDetails = lazy(() => import('pages/MovieDetails/MovieDetails'));
+import { Cast } from './Cast/Cast';
+import { Reviews } from 'components/Reviews/Reviwes';
+import { NotFound } from '../pages/NotFound(404)/NotFound';
+import { Movies } from 'pages/Movies/Movies';
+
+const Home = lazy(() =>
+  import('pages/Home/Home').then(module => ({
+    ...module,
+    default: module.Home,
+  }))
+);
+
+// const Movies = lazy(() =>
+//   import('pages/Movies/Movies').then(module => ({
+//     ...module,
+//     default: module.Movies,
+//   }))
+// );
+const MovieDetails = lazy(() =>
+  import('pages/MovieDetails/MovieDetails').then(module => ({
+    ...module,
+    default: module.MovieDetails,
+  }))
+);
+
+// якщо б був дефолтний імпорт, то, наприклад
 // const Movies = lazy(() => import('pages/Movies/Movies'));
 
 export const App = () => {
   return (
-    <Box>
-      <Header />
+    <>
+      {/* <SharedLayout /> */}
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/movies/:movieId" element={<MovieDetails />}>
-            {' '}
-            <Route path="cast" element={<Cast />} />
-            <Route path="reviews" element={<Reviews />} />
-          </Route>
+          <Route path="/" element={<SharedLayout />}>
+            <Route index element={<Home />} />
+            <Route path="/movies" element={<Movies />} />
+            <Route path="/movies/:movieId" element={<MovieDetails />}>
+              {' '}
+              <Route path="cast" element={<Cast />} />
+              <Route path="reviews" element={<Reviews />} />
+            </Route>
 
-          <Route path="*" element={<NotFound />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
         </Routes>
       </Suspense>
-    </Box>
+    </>
   );
 };

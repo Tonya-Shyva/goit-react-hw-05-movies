@@ -1,13 +1,13 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const HeaderStyled = styled.header`
+export const Header = styled.header`
   top: 0;
   left: 0;
   position: sticky;
-  z-index: 1100;
+  z-index: 1000;
   display: flex;
-  justify-content: left;
+  /* justify-content: left; */
   align-items: center;
   padding: 15px;
   color: #fff;
@@ -20,11 +20,12 @@ export const Navigation = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 115px;
+  width: 180px;
   font-weight: bold;
 `;
 
 export const StyledLink = styled(NavLink)`
+  font-size: 20px;
   color: black;
   text-decoration: none;
 
