@@ -59,7 +59,7 @@ function SearchBar() {
         </SearchForm>
       </SearchBarWrap>
 
-      {movies && (
+      {movies.length > 0 && (
         <Suspense fallback={<Loader />}>
           <MoviesList movies={movies} />
         </Suspense>

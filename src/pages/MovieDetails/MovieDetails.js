@@ -1,6 +1,7 @@
 import { Outlet, useLocation, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import { ImArrowLeft2 } from 'react-icons/im';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 import {
   AdditionInformWrap,
@@ -21,7 +22,11 @@ export const MovieDetails = () => {
 
   useEffect(() => {
     const responce = getMovieDetails(movieId);
-    responce.then(res => setMovieDetails(res));
+    responce
+      .then(Loading.circle())
+      .then(res => setMovieDetails(res))
+      .catch(error => console.log(error))
+      .finally(Loading.remove());
   }, [movieId]);
 
   if (!movieDetails) return;
