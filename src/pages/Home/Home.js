@@ -11,6 +11,8 @@ export const Home = () => {
     getTrending().then(data => setTrendingMovies(data));
   }, []);
 
+  if (trendingMovies.length === 0) return;
+  // console.log(trendingMovies);
   return (
     <main>
       <MainPageContainer>

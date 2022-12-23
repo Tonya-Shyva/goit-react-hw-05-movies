@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const SearchBarWrap = styled.div`
   display: flex;
-  justify-content: left;
+  justify-content: center;
   padding-top: 15px;
 
   align-items: center;
@@ -13,7 +13,7 @@ export const SearchBarWrap = styled.div`
 export const SearchForm = styled.form`
   display: flex;
   align-items: center;
-  width: 100%;
+
   max-width: 600px;
   background-color: #fff;
   border-radius: 3px;
@@ -22,7 +22,7 @@ export const SearchForm = styled.form`
 
 export const SearchBarInput = styled.input`
   display: inline-block;
-  width: 50%;
+  width: 100%;
   font: inherit;
   font-size: 20px;
   line-height: normal;
