@@ -21,7 +21,7 @@ const Movies = lazy(() =>
   }))
 );
 
-// якщо б був дефолтний імпорт, то, наприклад
+// якщо б був дефолтний імпорт, то запис такий
 // const Movies = lazy(() => import('pages/Movies/Movies'));
 
 export const App = () => {
