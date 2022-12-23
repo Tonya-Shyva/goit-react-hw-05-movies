@@ -24,7 +24,9 @@ export const MovieDescription = styled.div`
 `;
 
 export const AdditionalInformWrap = styled.div`
-  padding: 15px;
+  padding: 0px 15px;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
 `;
 
 export const AdditionalInformLink = styled(NavLink)`
