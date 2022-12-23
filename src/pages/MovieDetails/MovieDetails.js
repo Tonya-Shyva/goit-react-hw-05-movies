@@ -1,24 +1,25 @@
 import { Outlet, useLocation, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
-import { ImArrowLeft2 } from 'react-icons/im';
+import { ImArrowLeft2, ImArrowRight2 } from 'react-icons/im';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 import {
-  AdditionInformWrap,
+  AdditionalInformWrap,
+  AdditionalInformLink,
   DetailsContainer,
   GoBackLink,
   MovieDescription,
+  AdditionalInformText,
 } from './MovieDetails.styled';
 
 import { getMovieDetails } from 'utils/getMoviesApi';
-import { Link } from 'react-router-dom';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState();
 
   const location = useLocation();
-  const goBackLink = location.state?.from ?? '/';
+  const backLinkLocation = location.state?.from ?? '/';
 
   useEffect(() => {
     const responce = getMovieDetails(movieId);
@@ -37,7 +38,7 @@ export const MovieDetails = () => {
 
   return (
     <main>
-      <GoBackLink to={goBackLink}>
+      <GoBackLink to={backLinkLocation}>
         <ImArrowLeft2 />
         Go back
       </GoBackLink>
@@ -66,18 +67,27 @@ export const MovieDetails = () => {
           <p>{genres ? genres.map(genre => genre.name).join(', ') : ''}</p>
         </MovieDescription>
       </DetailsContainer>
-      <AdditionInformWrap>
+      <AdditionalInformWrap>
         <h2>Additional information</h2>
         <ul>
           <li>
-            <Link to="cast">Cast</Link>
+            <AdditionalInformLink to="cast" state={{ from: backLinkLocation }}>
+              <AdditionalInformText>Cast</AdditionalInformText>
+              <ImArrowRight2 />
+            </AdditionalInformLink>
           </li>
           <li>
-            <Link to="reviews">Reviews</Link>
+            <AdditionalInformLink
+              to="reviews"
+              state={{ from: backLinkLocation }}
+            >
+              <AdditionalInformText>Reviews</AdditionalInformText>
+              <ImArrowRight2 />
+            </AdditionalInformLink>
           </li>
         </ul>
         <Outlet />
-      </AdditionInformWrap>
+      </AdditionalInformWrap>
     </main>
   );
 };

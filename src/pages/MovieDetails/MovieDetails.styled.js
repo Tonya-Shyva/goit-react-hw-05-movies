@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const DetailsContainer = styled.div`
@@ -23,6 +23,19 @@ export const MovieDescription = styled.div`
   margin-left: 10px;
 `;
 
-export const AdditionInformWrap = styled.div`
+export const AdditionalInformWrap = styled.div`
   padding: 15px;
+`;
+
+export const AdditionalInformLink = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  color: black;
+
+  &.active {
+    color: rgb(200, 10, 10);
+  }
+`;
+export const AdditionalInformText = styled.span`
+  margin-right: 10px;
 `;
